@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Red+Hat+Text:wght@700&family=Rubik:wght@300;400;500;600&display=swap');
+
+:root {
+
+    /* Primary color */
+    --Grayishblue: hsl(237, 18%, 59%);
+    --Softred: hsl(345, 95%, 68%);
+    /* Neutral */
+
+    --White: hsl(0, 0%, 100%);
+    --Darkdesaturatedblue: hsl(236, 21%, 26%);
+    --Verydarkblue: hsl(235, 16%, 14%);
+    --Verydarkmostlyblackblue: hsl(234, 17%, 12%);
+    --uppercardTextcolor: hsl(345, 62%, 57%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Red Hat Text', sans-serif;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    background: url('../images/bg-stars.svg'), linear-gradient(0deg, rgb(37, 29, 44) 33%, rgb(30, 30, 40) 50%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comedown-timer-header {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--White);
+    letter-spacing: .25rem;
+}
+
+.comedown-timer-cards {
+    display: flex;
+    gap: .67rem;
+    justify-content: center;
+}
+
+.timer-card {
+    text-align: center;
+}
+
+.comedown-timer-card {
+    color: var(--Softred);
+    position: relative;
+    box-shadow: 0 7px 3px 0 rgb(21, 21, 21);
+    width: fit-content;
+    height: fit-content;
+}
+
+.upper-part,
+.lower-part,
+.uppper-flip,
+.lower-flip {
+    padding: 22px 9px;
+    will-change: transform !important;
+    overflow: hidden;
+}
+
+.upper-part,
+.uppper-flip {
+    background-color: hsl(235.71deg 22.9% 21.62%) !important;
+    border-radius: 5px 5px 0 0;
+    color: var(--uppercardTextcolor);
+}
+
+.lower-part,
+.lower-flip {
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 5px 0 rgba(71, 83, 115, 0.7) inset;
+    background-color: var(--Darkdesaturatedblue);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.uppper-flip{
+    position: absolute;
+    top: 0;
+    transform-origin: bottom; 
+    transform: rotateX(0deg);
+    animation: uppper-flip 0.5s ease-in forwards;
+}
+.lower-flip{
+    position: absolute;
+    bottom: 0;
+    transform-origin: top;
+	transform: rotateX(90deg);
+	animation: lower-flip 0.5s ease-out 0.5s;
+}
+
+.comedown-timer-card::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    left: -5px;
+    bottom: 2.5rem;
+    background-color: rgb(25, 26, 36);
+    z-index: 1;
+}
+
+.comedown-timer-card::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    right: -5px;
+    bottom: 2.5rem;
+    background-color: rgb(25, 26, 36);
+}
+
+
+
+.timer-title {
+    color: var(--Grayishblue);
+    text-transform: uppercase;
+    font-size: .53rem;
+    padding-top: 1.2rem;
+    letter-spacing: 3px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: url('../images/pattern-hills.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+
+}
+
+.social-media-logos {
+    display: flex;
+    justify-content: center;
+
+}
+
+.social-media-logo a {
+    text-decoration: none;
+    color: var(--Grayishblue);
+    transition: .4s color;
+}
+
+.social-media-logo a:hover {
+    cursor: pointer;
+    color: var(--Softred);
+    outline: none;
+}
+
+@keyframes uppper-flip  {
+        to{
+            transform: rotateX(90deg);
+        }
+}
+@keyframes lower-flip  {
+        to{
+            transform: rotateX(0deg);
+        }
+}
+
+@media screen and (min-width:280px) and (max-width:359px) {
+    .comedown-timer-cards {
+        gap: .39rem !important;
+        justify-content: center;
+    }
+
+    .upper-part,
+    .lower-part,
+    .uppper-flip,
+    .lower-flip {
+        padding: 22px 10px !important;
+        font-size: 2.05rem !important;
+        width: 3.8rem !important;
+    }
+
+    .timer-title {
+        font-size: .48rem !important;
+        padding-top: 1.2rem !important;
+        letter-spacing: 2px !important;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    .main {
+        background-position: 80% center;
+    }
+
+    .comedown-timer-section {
+        width: 90%;
+        height: fit-content;
+    }
+
+    .comedown-timer-header {
+        margin-bottom: 3rem;
+        font-size: .75rem;
+        font-weight: 400;
+        letter-spacing: .32rem;
+    }
+
+    .upper-part,
+    .lower-part,
+    .uppper-flip,
+    .lower-flip {
+        font-size: 2.07rem;
+        width: 4.8rem;
+        height: 2.68rem;
+    }
+
+    .footer {
+        height: 20%;
+        width: inherit;
+        background-position: 82% center;
+    }
+
+    .social-media-body {
+        width: 90%;
+        margin: auto;
+    }
+
+    .social-media-logos {
+        gap: 1.5rem;
+        padding: 3.5rem 0 0 0;
+    }
+
+    .ri-facebook-box-fill,
+    .ri-pinterest-fill,
+    .ri-instagram-fill {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (min-width:600px) {
+    .main {
+        background-position: 85% center;
+    }
+
+    .comedown-timer-section {
+        width: 90%;
+        height: fit-content;
+    }
+
+    .comedown-timer-header {
+        margin-bottom: 3rem;
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: .32rem;
+    }
+
+    .comedown-timer-cards {
+        gap: 1.5rem;
+    }
+
+    .upper-part,
+    .lower-part,
+    .uppper-flip,
+    .lower-flip {
+        padding: 30px 9px;
+        font-size: 2.86rem;
+        width: 6.8rem;
+        height: 3.58rem;
+    }
+
+    .comedown-timer-card::before {
+        width: 11px;
+        height: 11px;
+        left: -5px;
+        bottom: 3.4rem;
+    }
+
+    .comedown-timer-card::after {
+        width: 11px;
+        height: 11px;
+        right: -5px;
+        bottom: 3.4rem;
+    }
+
+    .timer-title {
+        font-size: .75rem;
+        padding-top: 1.2rem;
+        letter-spacing: 4px;
+    }
+
+    .footer {
+        height: 23%;
+        background-position: 90% center;
+    }
+
+    .social-media-body {
+        width: 90%;
+        margin: auto;
+    }
+
+    .social-media-logos {
+        gap: 1.5rem;
+        padding: 3.8rem 0 0 0;
+    }
+
+    .ri-facebook-box-fill,
+    .ri-pinterest-fill,
+    .ri-instagram-fill {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width:992px) {
+    .main {
+        background-position: inherit;
+    }
+
+    .upper-part,
+    .lower-part,
+    .uppper-flip,
+    .lower-flip {
+        width: 7.5rem;
+    }
+
+    .footer {
+        height: 23%;
+        width: 100%;
+        background-position: inherit;
+    }
+}
